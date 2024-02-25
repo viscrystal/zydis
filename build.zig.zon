@@ -1,0 +1,18 @@
+.{
+    .name = "zydis",
+    .version = "4.0.0",
+    .paths = .{
+        "src",
+        "include",
+        "tools",
+        "LICENSE",
+        "build.zig",
+        "build.zig.zon",
+    },
+    .dependencies = .{
+        .zycore = .{
+            .url = "git+https://github.com/viscrystal/zycore.git#e0738a57e6ade3b484c22d9d0799155469c35c8b",
+            .hash = "1220e7263437c1c8c6f47ef5b530cf91763477738e6c50550cff09d6e700f2bba511",
+        },
+    },
+}
