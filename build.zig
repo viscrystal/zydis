@@ -17,10 +17,12 @@ pub fn build(b: *std.Build) !void {
         zydis.bundle_compiler_rt = true;
 
     zydis.linkLibC();
-    zydis.linkLibrary(b.dependency("zycore", .{
+    const zycore = b.dependency("zycore", .{
         .target = target,
         .optimize = optimize,
-    }).artifact("zycore"));
+    });
+    zydis.linkLibrary(zycore.artifact("zycore"));
+    zydis.installLibraryHeaders(zycore.artifact("zycore"));
 
     if (target.result.os.tag == .windows) {
         zydis.linkSystemLibrary("ntdll");
